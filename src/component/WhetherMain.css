@@ -1,0 +1,50 @@
+.container {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f8ff;
+    min-height: 100vh;
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.check-button {
+    padding: 10px 20px;
+    margin: 10px 10px 0 0;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.location-heading {
+    font-size: 24px;
+    color: #007BFF;
+    margin-bottom: 20px;
+}
+
+.info-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+.weather-icon {
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
+}
