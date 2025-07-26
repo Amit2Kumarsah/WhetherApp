@@ -17,7 +17,12 @@ function WhetherMain() {
     const [location, setLocation] = useState(''); // Add state for location
 
     const getWhether = () => {
-        axios.get(`http://api.weatherapi.com/v1/current.json?key=0a56ddc8df544c96bdf44243251101&q=${city}`)
+        axios.get(`https://api.weatherapi.com/v1/current.json`, {
+            params: {
+            key: '0a56ddc8df544c96bdf44243251101',
+            q: city
+            }
+        })
         .then((response) => {
             const data = response.data;
             setWhether(data.current.condition.text); // Corrected path for weather description
