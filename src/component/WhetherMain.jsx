@@ -13,19 +13,21 @@ function WhetherMain() {
     const [visibility, setVisibility] = useState('');
     const [wind, setWind] = useState('');
     const [clouds, setClouds] = useState('');
-    const [icon, setIcon] = useState('');
+    const [icon, setIcon] = useState('https://cdn.weatherapi.com/weather/64x64/day/113.png'); // Default icon
     const [location, setLocation] = useState(''); // Add state for location
 
-    const getWhether = () => {
-        axios.get(`https://api.weatherapi.com/v1/current.json`, {
-            params: {
-            key: '0a56ddc8df544c96bdf44243251101',
-            q: city
-            }
-        })
-        .then((response) => {
+    const getWhether = async() => {
+        try {
+            const response = await axios.get(`https://api.weatherapi.com/v1/current.json`,{
+                params: {
+                key: '0a56ddc8df544c96bdf44243251101',
+                q: city
+                }
+            })
+
             const data = response.data;
-            setWhether(data.current.condition.text); // Corrected path for weather description
+
+             setWhether(data.current.condition.text); // Corrected path for weather description
             setTemp(data.current.temp_c);
             setPressure(data.current.pressure_mb);
             setHumidity(data.current.humidity);
@@ -34,10 +36,10 @@ function WhetherMain() {
             setClouds(data.current.cloud || 'N/A'); // Adjusted for cloud data
             setIcon(data.current.condition.icon); // Corrected path for icon
             setLocation(data.location.name); // Set location from API response
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+        } catch (error) {
+            console.error("Error fetching weather data:", error);
+            setWhether('Unable to fetch weather data'); // Set a fallback message
+        }
     };
 
     useEffect(() =>{
